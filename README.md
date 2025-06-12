@@ -29,6 +29,31 @@ Page Object Model is a design pattern in test automation that encourages the cre
   Contains test scripts for different test cases.  
   Each script uses the page classes to perform actions and assertions.
 
+- **OrangeHRM Test Manager.py**  
+  A desktop GUI application to create or update the `Config.json` file used for test configuration.
+
+---
+
+## OrangeHRM Test Manager (GUI Application)
+
+This project includes a desktop-based GUI application:  
+**OrangeHRM Test Manager.py**
+
+### Functionality:
+- **Create or update the test configuration file (`Config.json`)** in the `Json_Files` directory.
+- **Edit all test parameters** such as Test URL, Incognito Mode, Drivers Type, Testing Browser, Headless Mode, Show Report, and Cross Browser Testing.
+- **Select or change the location** of the config file if needed.
+- **User-friendly interface** to manage test settings without editing JSON manually.
+
+### How to use:
+1. Run the GUI:
+   ```
+   python "OrangeHRM Test Manager.py"
+   ```
+2. Fill in or update the required test configuration fields.
+3. Click **Save Config** to create or update the `Config.json` file in the `Json_Files` folder.
+4. The test scripts will use this configuration for execution.
+
 ---
 
 ## How to Run the Tests
@@ -44,7 +69,7 @@ Page Object Model is a design pattern in test automation that encourages the cre
    Place the appropriate browser drivers (e.g., ChromeDriver, GeckoDriver for Firefox, EdgeDriver) in the `drivers` folder as specified in your config.
 
 3. **Configure the Test**  
-   Edit `Json_Files/Config.json` to set your browser, test URL, and other settings.
+   Use the **OrangeHRM Test Manager** GUI or manually edit `Json_Files/Config.json` to set your browser, test URL, and other settings.
 
 4. **Run a Test Script**  
    - Open the `testscripts/login.py` file.
@@ -62,6 +87,7 @@ Page Object Model is a design pattern in test automation that encourages the cre
 - **Page actions** (like login, logout, etc.) are implemented in the `pages` folder, named according to the page (e.g., `loginPage.py` for the login page).
 - **Test scripts** for different scenarios are in the `testscripts` folder.
 - To run a specific test case, open the corresponding script in the `testscripts` folder and execute it.
+- Use the **OrangeHRM Test Manager** GUI for easy configuration management.
 
 ---
 
