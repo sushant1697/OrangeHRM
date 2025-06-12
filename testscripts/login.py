@@ -29,6 +29,7 @@ class Login(unittest.TestCase):
         file = open(config_loc,)
         data = json.load(file)
         test_url=data["drivers_config"]["Test_URL"]
+        cross_browser_testing=data["drivers_config"]["Cross_Browser_Testing"]
         Testing_Browser=data["drivers_config"]["Testing_Browser"]
         Headless_mode=data["drivers_config"]["Headless_mode"]
         file.close()
@@ -94,9 +95,31 @@ if __name__ == '__main__':
     current_directory = os.getcwd()
     config_loc = os.path.join(current_directory, "Json_Files", "Config.json")
     file = open(config_loc,)
-    data = json.load(file)   
-    Show_Report =   data["drivers_config"]["Show_Report"]
-    if Show_Report == True:
-        unittest.main(testRunner = HtmlTestRunner.HTMLTestRunner(output='Testing_report', title="Login Page Test", report_name="Login",open_in_browser=True))
-    elif Show_Report == False:        
-        unittest.main()
+    data = json.load(file)
+    Show_Report = data["drivers_config"]["Show_Report"]
+    cross_browser_testing = data["drivers_config"]["Cross_Browser_Testing"]
+    Testing_Browser = data["drivers_config"]["Testing_Browser"]
+
+    def run_tests():
+        suite = unittest.TestLoader().loadTestsFromTestCase(Login)
+        if Show_Report:
+            runner = HtmlTestRunner.HTMLTestRunner(
+                output='Testing_report',
+                title="Login Page Test",
+                report_name="Login",
+                open_in_browser=True
+            )
+        else:
+            runner = unittest.TextTestRunner()
+        runner.run(suite)
+
+    if cross_browser_testing:
+        browsers = ["Chrome", "Edge", "Firefox"]
+        for browser in browsers:
+            data["drivers_config"]["Testing_Browser"] = browser
+            with open(config_loc, "w") as f:
+                json.dump(data, f, indent=4)
+            print(f"\nRunning tests on {browser}...\n")
+            run_tests()
+    else:
+        run_tests()

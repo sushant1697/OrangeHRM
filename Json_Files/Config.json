@@ -3,8 +3,9 @@
         "Test_URL": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
         "Incognito_Mode": "No",
         "Drivers_Type": "Online",
-        "Testing_Browser": "Firefox",
-        "Headless_mode": false,
-        "Show_Report": true
+        "Testing_Browser": "Chrome",
+        "Headless_mode": true,
+        "Show_Report": false,
+        "Cross_Browser_Testing": true
     }
 }
