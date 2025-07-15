@@ -4,7 +4,7 @@
         "Incognito_Mode": "No",
         "Drivers_Type": "Online",
         "Testing_Browser": "Chrome",
-        "Headless_mode": true,
+        "Headless_mode": false,
         "Show_Report": false,
         "Cross_Browser_Testing": true
     }
